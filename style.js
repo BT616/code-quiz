@@ -77,8 +77,34 @@ function render(questionList){
         questionsDiv.appendChild(ulCreate);
         ulCreate.appendChild(listItem);
         listItem.addEventListener("click",(compare));
-        });
+        })
 }
+function compare (event){
+    var element = event.target;
+    if (element.matches("li")){
+
+        var createDiv = document.createElement("div");
+        createDiv.divsetAttribut("id","createDiv");
+        if(element.textContent == questions[questionList].answer){
+            score++;
+            createDiv,textContent = "correct";
+        
+        } else {
+            secondsLEft = secondsLeft- penalty;
+            createDiv.textContent= incorrect
+        }
+    } 
+    questionList++;
+
+    if (questionList >= questions.length){
+        allDone();
+        createDiv.textContent = "end of quiz";
+    } else {
+        render(questionList);
+    }
+    questionsDiv.appendChild(createDiv);
+}
+
 
 
 
