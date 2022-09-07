@@ -29,21 +29,18 @@ button{
 }
 
 
-.timer-count{
+#questionsDiv {
    position: absolute;
     top:10px;
    right: 20px;
-
-   
-}
-.high-score{
-position: absolute;
-    top:10px;
-   left: 20px;
-}
-.word-blanks{
-    font-size: larger;
+   font-size: larger;
     text-align: center;
     margin: 40px 40px 40px 40px;
     padding: 100px;
+   
+}
+a{
+position: absolute;
+    top:10px;
+   left: 20px;
 }

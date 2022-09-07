@@ -2,35 +2,35 @@
 var questions = [
     {
         title: "A very useful tool used during development and debugging for printting content to the debugger is:",
-        choices: ['1.JavaScript','2.Terminal/bash','3.for loops','4.console.log'],
+        choices: [".JavaScript",".Terminal/bash",".for loops",".console.log"],
         answer:"4.console.log",
     },
     {
        title: "Commonly used data types DO NOT include:",
-        title: ["1.String","2.Boolean","3.Alerts","4.Numbers"],
+        choices: [".String",".Boolean",".Alerts",".Numbers"],
         answer:"3.Alerts",
     },
     {
         title: "The condiition of an if / else statement is enclised within",
-        choices: ["1.quotes","2.curly brackets","3.paranthesis","4.square brackets"],
+        choices: [".quotes",".curly brackets",".paranthesis",".square brackets"],
         answer:"3.paranthesis",
     },
     {
         title: "Arrays in javascript can be used to store _____.?",
-        choices: ["1.Numbers and Strings","2.Other Arrays","3.boolean","4.All of the Above"],
+        choices: [".Numbers and Strings",".Other Arrays",".boolean",".All of the Above"],
         answer:"4.Allof the above",
     },
     {
         title: "String values must be enclosed within ___ when being assigned to variables.",
-        choices: ["1.commas","2.Curly Brackets","3.Quotes","4.Paranthesis"],
-        answer:"Quotes",
+        choices: [".commas",".Curly Brackets",".Quotes",".Paranthesis"],
+        answer:"3.Quotes",
     },
 ];
 
 
 var  currentTime= document.querySelector("#currentTime");
 var timer  = document.querySelector("#startTime");
-var questionsDiv = document.querySelector("#questionsDIv");
+var questionsEl = document.querySelector("#questions");
 var wrapper = document.querySelector("#wrapper");
 
 
@@ -40,9 +40,10 @@ var score = 0;
 var secondsLeft =75;
 var timerInterval = 0;
 var penalty= 10;
-var ulCreate =document.createElement("ul");
+var ulCreate =document.createElement("ol");
    
 //timer 
+
 
 timer.addEventListener("click", function(){
     if (timerInterval === 0){
@@ -52,7 +53,7 @@ timer.addEventListener("click", function(){
 
         if (secondsLeft <= 0){
             clearInterval(timerInterval);
-            allDone();
+           
             currentTime.textContent=  "game over";
         }
 
@@ -64,52 +65,32 @@ timer.addEventListener("click", function(){
 //questions
 
 function render(questionList){
-    questionsDiv.innerHTML = "";
-    ulCreate.innerHTML ="";
-    for(var i =0; i < questions.length; i++){
+    questionsEl.innerHTML ="";
+    ulCreate.innerHTML="";
+    for (var i=0; i < questions.length; i++){
+
         var userQuestion = questions[questionList].title;
-        var userChoices = questions[questionList].choices;
-        questionsDiv.textContent = userQuestion;
+        var userChoices= questions[questionList].choices;
+        questionsEl.textContent= userQuestion;
     }
-    userChoices.forEach(function(newItem){
-        var listItem = document.createElement("li");
-        listItem.textContent = newItem;
-        questionsDiv.appendChild(ulCreate);
-        ulCreate.appendChild(listItem);
-        listItem.addEventListener("click",(compare));
-        })
+userChoices.forEach(function (newItem) {
+var listItem = document.createElement("li");
+listItem.textContent=newItem;
+questionsEl.appendChild(ulCreate);
+ulCreate.appendChild(listItem);
+listItem.addEventListener("click",(compare));
+
+})
+
 }
-function compare (event){
-    var element = event.target;
-    if (element.matches("li")){
 
-        var createDiv = document.createElement("div");
-        createDiv.divsetAttribut("id","createDiv");
-        if(element.textContent == questions[questionList].answer){
-            score++;
-            createDiv,textContent = "correct";
-        
-        } else {
-            secondsLEft = secondsLeft- penalty;
-            createDiv.textContent= incorrect
-        }
-    } 
-    questionList++;
+function compare(event){
 
-    if (questionList >= questions.length){
-        allDone();
-        createDiv.textContent = "end of quiz";
-    } else {
-        render(questionList);
-    }
-    questionsDiv.appendChild(createDiv);
 }
 
 
+questionList++
 
 
-
-
-
-
+//highscore
 

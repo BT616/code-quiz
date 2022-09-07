@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="">
     <title>Code-quiz</title>
 </head>
 <body>
      <main>
                 
-        <section>
+        <section><a href="highscores.html">View High Score</a>
                      <div  id ="wrapper"> 
-                          <a href="highscores.html" class= "high-score">View High Score</a>
-                        <div class="timer">
-                        <div class="timer-count" id="currentTime">Time:0</div>
-                    </div>
+
+                     
+
+                    <div id="currentTime">Time:0</div>
+                    
                 
-                    <div class= "word-blanks" id="questionsDiv">
+                    <div id="questions">
+
                         <h1>CODING QUIZ CHALLENGE</h1>
                         <p>Try to answer the folowing code-related questions within the time limit. Keep in mind the incorrect answers will pejalize your score/time by ten seconds!</p>
-                    <ul id="choicesUl"></ul>
-                        <button class="start-button" id="startTime"> Start Quiz </button>
-
+                    
+                        <ol id="choicesUl"></ol>
+                        <button id="startTime"> Start Quiz </button>
                     </div>
-                </div> 
+                    
+                </div>
         </section>
 
     </main>
