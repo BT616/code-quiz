@@ -55,6 +55,7 @@ timer.addEventListener("click", function(){
             clearInterval(timerInterval);
            
             currentTime.textContent=  "game over";
+            
         }
 
     },1000);
