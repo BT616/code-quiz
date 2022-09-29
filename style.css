@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
     padding: 0;
-    margin:0;
+     background-color:whitesmoke;
 }
 
 
@@ -14,16 +14,15 @@
     border:5px solid black;
     background-color: rgba(223, 213, 213, 0.44);
 }
-body{
-    background-color:whitesmoke;
-}
+
 
 
 button{
     margin-top: 50px;
-    padding:10px 20px 10px 20px;
+    padding:10px 10px 10px 10px;
     border-radius: 10%;
     background-color: rgb(205, 116, 249);
+    
     position: relative;
     font-size:20px;
 }
@@ -38,4 +37,12 @@ button{
     margin: 40px 40px 40px 40px;
     padding: 100px;
    
+}
+
+.container{
+padding-left: 50%;
+padding-top: 10%;
+ justify-content: center;
+ 
+
 }

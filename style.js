@@ -32,6 +32,7 @@ var currentTime = document.querySelector("#currentTime");
 var timer = document.querySelector("#startTime");
 var questionsEl = document.querySelector("#questions");
 var wrapper = document.querySelector("#wrapper");
+var scoreBoard = document.getElementById("scoreboard");
 
 
 var questionList = 0;
@@ -71,6 +72,7 @@ function render() {
 
     var userQuestion = questions[questionList].title;
     var userChoices = questions[questionList].choices;
+
     questionsEl.textContent = userQuestion;
 
     //answers 
@@ -94,45 +96,53 @@ function render() {
 function compare(userInput) {
     
     var correctAnswer = questions[questionList].answer;
-    var createDiv=document.createElement("div");
+  
+   
     if (userInput === correctAnswer) {
-       
-        createDiv.textContent="correct";
-        createDiv.setAttribute("id","createDiv");
-        ulCreate.appendChild(createDiv);
-
+        
     } else {
         if (secondsLeft >= penalty) {
             secondsLeft -= penalty
-           
 
+           
 
         } else {
             secondsLeft = 0
+
         }
     }
     //push questions
     questionList++
     if (questionList < questions.length) {
+
         render()
     }
     else {
 
         endgame()
     }
+
+
 }
 
 //end gamefunction shows the submit initials box at the end of the quiz
 function endgame() {
     clearInterval(timerInterval);
-    console.log("endgame")
+  
     questionsEl.innerHTML = "";
     ulCreate.innerHTML = "";
 
     var endGameScreen= document.createElement("h1");
-    endGameScreen.setAttribute("id","endGameScreen");
     endGameScreen.textContent= "Game Over: Enter Your Initials";
    questionsEl.appendChild(endGameScreen);
+
+    var yourScore = document.createElement("p");
+    yourScore.setAttribute("id","endGameScreen");
+    yourScore.textContent= "Your Score:" + secondsLeft;
+    questionsEl.appendChild(yourScore);
+
+
+   
 
     // intial box 
     var submitInitials = document.createElement("input");
@@ -150,6 +160,8 @@ function endgame() {
 
 
 
+
+
     // creates the submit storage and replaces the page with the highschore html
     createSubmit.addEventListener("click", function () {
         var userInitials = submitInitials.value;
@@ -159,10 +171,8 @@ function endgame() {
         } else {
             var finalScore = {
                 initials: userInitials,
-                highScore: secondsLeft,
+                score: secondsLeft,
             };
-
-           
 
             var allScores = localStorage.getItem("allScores");
             if (allScores === null) {
@@ -175,11 +185,16 @@ function endgame() {
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
             window.location.replace("highScores.html");
+            
+
+           
         }
     });
 
 
 }
+
+
 
 
 //highscore
